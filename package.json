@@ -1,0 +1,21 @@
+{
+  "name": "ironledger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "install:apps": "./scripts/install-deps.sh && npm i",
+    "dev:ui": "npm --prefix apps/ui run dev",
+    "dev:api": "npm --prefix apps/api run start:dev",
+    "dev": "concurrently -k -n UI,API \"npm run dev:ui\" \"npm run dev:api\"",
+    "clean:install": "./scripts/clean-install.sh"
+
+  },
+  "keywords": [],
+  "author": "areesh-ali",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
