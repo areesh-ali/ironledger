@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { MembershipService } from './membership.service.js';
-import { MembershipController } from './membership.controller.js';
+import { MembershipService } from './membership.service';
+import { MembershipController } from './membership.controller';
 
 @Module({
   controllers: [MembershipController],

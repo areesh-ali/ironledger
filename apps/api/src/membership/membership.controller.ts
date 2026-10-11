@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { MembershipService } from './membership.service.js';
-import { CreateMembershipDto } from './dto/create-membership.dto.js';
-import { UpdateMembershipDto } from './dto/update-membership.dto.js';
+import { MembershipService } from './membership.service';
+import { CreateMembershipDto } from './dto/create-membership.dto';
+import { UpdateMembershipDto } from './dto/update-membership.dto';
 
 @Controller('membership')
 export class MembershipController {

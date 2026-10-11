@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateIamDto } from './dto/create-iam.dto.js';
-import { UpdateIamDto } from './dto/update-iam.dto.js';
+import { CreateIamDto } from './dto/create-iam.dto';
+import { UpdateIamDto } from './dto/update-iam.dto';
 
 @Injectable()
 export class IamService {

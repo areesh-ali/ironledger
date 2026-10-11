@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { IamService } from './iam.service.js';
-import { CreateIamDto } from './dto/create-iam.dto.js';
-import { UpdateIamDto } from './dto/update-iam.dto.js';
+import { IamService } from './iam.service';
+import { CreateIamDto } from './dto/create-iam.dto';
+import { UpdateIamDto } from './dto/update-iam.dto';
 
 @Controller('iam')
 export class IamController {
