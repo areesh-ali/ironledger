@@ -5,18 +5,18 @@ import {
   CallHandler,
   HttpStatus,
   StreamableFile,
-} from "@nestjs/common";
+} from '@nestjs/common';
 
-import { Reflector } from "@nestjs/core";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
-
+import { Reflector } from '@nestjs/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import {
   RESPONSE_META_KEY,
   ResponseMetaOptions,
-} from "../decorators/response-meta.decorator";
-import { SystemCode } from "../constants/system-codes";
+} from '../decorators/response-meta.decorator';
+import { SYSTEM_CODES } from '../constants/system-codes';
+import type { ApiResponse } from '../interfaces/api-response.interface';
 
 @Injectable()
 export class ResponseInterceptor<T>
@@ -28,7 +28,7 @@ export class ResponseInterceptor<T>
     context: ExecutionContext,
     next: CallHandler<T>,
   ): Observable<any> {
-    if (context.getType() !== "http") {
+    if (context.getType() !== 'http') {
       return next.handle();
     }
 
@@ -52,9 +52,9 @@ export class ResponseInterceptor<T>
 
         return {
           statusCode: response.statusCode,
-          message: metadata?.message ?? "Success",
-          systemcode:
-            metadata?.system_code ?? SystemCode.SUCCESS,
+          message: metadata?.message ?? 'Success',
+          system_code:
+            metadata?.system_code ?? SYSTEM_CODES.SUCCESS,
           ...(data !== undefined ? { data } : {}),
         } satisfies ApiResponse<T>;
       }),

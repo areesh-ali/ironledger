@@ -5,16 +5,13 @@ export default class CreateUserRequestDTO {
   @IsEmail()
   email: string;
 
-  @IsPhoneNumber()
-  @IsNotEmpty()
-  phonenumber: string;
-
   @IsStrongPassword()
   @IsNotEmpty()
   password: string;
 
 
   @IsString()
+  @IsNotEmpty()
   displayname: string;
 
 }

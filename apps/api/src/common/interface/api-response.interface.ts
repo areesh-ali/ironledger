@@ -1,6 +1,1 @@
-interface ApiResponse<T = unknown> {
-  statusCode: number,
-  message: string,
-  systemcode: string,
-  data? : T
-}
+export type { ApiResponse } from '../interfaces/api-response.interface';

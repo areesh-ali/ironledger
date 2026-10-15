@@ -28,8 +28,6 @@ export const users = pgTable(
 
     passwordHash: text("password_hash").notNull(),
 
-    passwordSalt: text("password_salt").notNull(),
-
     // Profile
     displayName: varchar("display_name", { length: 120 }),
 

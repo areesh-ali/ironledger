@@ -1,12 +1,15 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 
 async function bootstrap() {
+  
   const app = await NestFactory.create(AppModule);
-
-  await app.listen(process.env.PORT ?? 3000);
-
+  app.enableVersioning({
+    type: VersioningType.URI,
+      defaultVersion: '1'
+  });
+  app.setGlobalPrefix("api")
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -14,8 +17,16 @@ async function bootstrap() {
       transform: true
     })
   )
+  app.enableShutdownHooks();
+  await app.listen(process.env.PORT ?? 3000);
 
-  console.log(`The Server is running at port:${process.env.PORT}`);
+  const appurl = await app.getUrl();
+
+  Logger.log(`IronLedger API running at ${appurl}`, 'Bootstrap');
 
 }
-bootstrap();
+
+bootstrap().catch((error: unknown) => {
+  console.error('Application startup failed:', error);
+  process.exitCode = 1;
+});
